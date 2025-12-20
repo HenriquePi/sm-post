@@ -23,10 +23,31 @@ Guidelines:
 - Keep posts concise and impactful
 - Include relevant hashtags when appropriate
 - Avoid overly promotional language
-- Make content shareable and engaging`;
+- Make content shareable and engaging
+- IMPORTANT: When including URLs, write them as plain text (e.g., "voxelquote.com" or "https://voxelquote.com"). DO NOT use markdown link format like [text](url).`;
 
   if (platforms.length > 0) {
     systemPrompt += `\n\nTarget platforms: ${platforms.join(', ')}. Adapt the tone and format accordingly.`;
+    
+    if (platforms.includes('linkedin')) {
+      systemPrompt += `\n\nLinkedIn-specific guidelines:
+- Professional and thought-leadership focused
+- Longer form content (1300-3000 characters works well)
+- Use line breaks for readability
+- Include 3-5 relevant hashtags at the end
+- Encourage professional discussion and engagement
+- URLs should be plain text (not markdown links)`;
+    }
+    
+    if (platforms.includes('facebook')) {
+      systemPrompt += `\n\nFacebook-specific guidelines:
+- Conversational and community-focused
+- Shorter, more casual content (40-80 words is optimal)
+- Use emojis sparingly but effectively
+- Ask questions to encourage comments
+- Include 1-3 relevant hashtags
+- URLs should be plain text (not markdown links)`;
+    }
   }
 
   let contextSection = '';
